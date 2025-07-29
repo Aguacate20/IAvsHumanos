@@ -51,7 +51,7 @@ def get_current_situation(situation_index):
 
 # Function to save questionnaire data to Supabase
 def save_questionnaire_data(data):
-    response = supabase_client.table("Respuestas").insert({
+    response = supabase_client.table("respuestas").insert({
         "consentimiento": data["consentimiento"],
         "name": data["data.name"],
         "birthdate": data["data.birthdate"],
@@ -69,7 +69,7 @@ def save_questionnaire_data(data):
 # Function to save situation response to Supabase
 def save_situation_response(participant_id, situation_index, response_time, slider_value):
     result = f"{slider_value} - {response_time}"
-    supabase_client.table("SituationResponses").insert({
+    supabase_client.table("situationresponses").insert({
         "participant_id": participant_id,
         "situation_index": situation_index,
         "response": result
