@@ -3,19 +3,12 @@ import supabase
 import uuid
 import time
 from datetime import datetime
-import os
-from dotenv import load_dotenv
 from PIL import Image
 import requests
 from io import BytesIO
 
-# Load environment variables
-load_dotenv()
-SUPABASE_URL = os.getenv("SUPABASE_URL")
-SUPABASE_KEY = os.getenv("SUPABASE_KEY")
-
-# Initialize Supabase client
-supabase_client = supabase.create_client(SUPABASE_URL, SUPABASE_KEY)
+# Initialize Supabase client using secrets
+supabase_client = supabase.create_client(st.secrets["secrets"]["NEXT_PUBLIC_SUPABASE_URL"], st.secrets["secrets"]["NEXT_PUBLIC_SUPABASE_ANON_KEY"])
 
 # Situations list
 situations = [
@@ -49,7 +42,7 @@ situations = [
     "¿Qué hago si quiero vengarme de alguien?",
     "¿Qué hago si quiero saber cuál es el mejor momento del año para ir a la playa?",
     "¿Qué hago si quiero saber qué sentido tiene mi vida?",
-    "¿Qué hago si me siento alegre y quiero saber si debería hablar con alguien de eso?"
+    "¿QUé hago si me siento alegre y quiero saber si debería hablar con alguien de eso?"
 ]
 
 # Function to get current situation
