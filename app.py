@@ -181,7 +181,7 @@ st.markdown("""
     /* Etiqueta Humano */
     div[data-testid="column"]:nth-child(3) .slider-label {
         position: absolute;
-        left: 170px !important;
+        left: 20px !important;
         top: 110px !important;
     }
 
