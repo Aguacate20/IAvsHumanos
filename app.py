@@ -155,11 +155,11 @@ st.markdown("""
             top: 90px !important; /* Mueve verticalmente. Valores positivos mueven hacia abajo. */
         }
         div[data-testid="column"]:nth-child(3) img { /* Imagen Humano */
-            width: 120px !important; /* Ajusta el ancho */
+            width: 190px !important; /* Ajusta el ancho */
             height: auto !important;
             position: relative; /* ¡CLAVE! */
             right: -130px !important; /* Mueve horizontalmente. Valores negativos mueven a la derecha. */
-            top: -368px !important; /* Mueve verticalmente */
+            top: -268px !important; /* Mueve verticalmente */
         }
 
         /* 3. Posición de las Etiquetas "IA" y "Humano" */
