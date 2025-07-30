@@ -147,117 +147,65 @@ st.markdown("""
     /* Media query para pantallas más pequeñas (ej. celulares) */
     @media (max-width: 768px) {
 
-        /* 1. y 2. Tamaño y Posición de las Imágenes */
+    /* 1. y 2. Tamaño y Posición de las Imágenes */
 
-        div[data-testid="column"]:nth-child(1) img { /* Imagen IA */
+    div[data-testid="column"]:nth-child(1) img { /* Imagen IA */
+        width: 190px !important;
+        height: auto !important;
+        position: relative;
+        left: 330px !important;
+        top: 199.5px !important;
+    }
 
-            width: 190px !important; /* Ajusta el ancho de la imagen. Prueba con valores como 100px, 150px, etc. */
+    div[data-testid="column"]:nth-child(3) img { /* Imagen Humano */
+        width: 190px !important;
+        height: auto !important;
+        position: relative;
+        right: -130px !important;
+        top: -300px !important;
+    }
 
-            height: auto !important; /* Mantiene la proporción */
+    /* 3. Posición de las Etiquetas "IA" y "Humano" */
 
-            position: relative; /* ¡CLAVE! Permite mover el elemento sin afectar el flujo */
+    div[data-testid="column"]:nth-child(1) .slider-label { /* Etiqueta IA */
+        position: relative;
+        left: 130px !important;
+        top: 225px !important;
+    }
 
-            left: 330px !important; /* Mueve horizontalmente. Valores negativos mueven a la izquierda. */
+    div[data-testid="column"]:nth-child(3) .slider-label { /* Etiqueta Humano */
+        position: relative;
+        right: -20px !important;
+        top: -280px !important;
+    }
 
-            top: 199.5px !important; /* Mueve verticalmente. Valores positivos mueven hacia abajo. */
+    /* Bloque para modificar la posición de la situación */
 
-        }
+    .situation-text {
+        position: relative;
+        top: -200px !important;
+        /* left: 150px !important; */
+        /* text-align: left !important; */
+    }
 
-        div[data-testid="column"]:nth-child(3) img { /* Imagen Humano */
+    /* Ajuste del slider para que ocupe más espacio en pantallas pequeñas */
 
-            width: 190px !important; /* Ajusta el ancho */
+    .stSlider {
+        width: 100% !important;
+        margin: 20px auto !important;
+    }
 
-            height: auto !important;
+    /* 4. Posición del Botón "Siguiente" */
 
-            position: relative; /* ¡CLAVE! */
+    .stButton>button {
+        margin-top: -210px !important;
+        /* position: relative; */
+        /* left: 10px !important; */
+        /* margin-left: auto !important; */
+        /* margin-right: 20px !important; */
+    }
+}
 
-            right: -130px !important; /* Mueve horizontalmente. Valores negativos mueven a la derecha. */
-
-            top: -300px !important; /* Mueve verticalmente */
-
-        }
-
-
-
-        /* 3. Posición de las Etiquetas "IA" y "Humano" */
-
-        div[data-testid="column"]:nth-child(1) .slider-label { /* Etiqueta IA */
-
-            position: relative; /* ¡CLAVE! */
-
-            left: 130px !important; /* Mueve horizontalmente. Ajusta para alinear con la imagen. */
-
-            top: 225px !important; /* Mueve verticalmente. */
-
-        }
-
-        div[data-testid="column"]:nth-child(3) .slider-label { /* Etiqueta Humano */
-
-            position: relative; /* ¡CLAVE! */
-
-            right: -20px !important; /* Mueve horizontalmente. Ajusta para alinear con la imagen. */
-
-            top: -280px !important; /* Mueve verticalmente. */
-
-        }
-
-
-
-        /* Bloque para modificar la posición de la situación */
-
-        .situation-text {
-
-            position: relative; /* ¡CLAVE! */
-
-            top: -200px !important; /* Ajusta este valor para mover la situación verticalmente. */
-
-            /* Para moverla horizontalmente, puedes usar 'left' o 'right' */
-
-            /* left: 150px !important; */
-
-            /* text-align: left !important; */ /* Si quieres cambiar la alineación del texto */
-
-        }
-
-
-
-        /* Ajuste del slider para que ocupe más espacio en pantallas pequeñas */
-
-        .stSlider {
-
-            width: 100% !important;
-
-            margin: 20px auto !important; /* Centra el slider */
-
-        }
-
-
-
-        /* 4. Posición del Botón "Siguiente" */
-
-        /* Para el botón, 'margin-top' sigue siendo efectivo para el movimiento vertical. */
-
-        /* Para el horizontal, si quieres sacarlo del centro, puedes usar 'position: relative' */
-
-        .stButton>button {
-
-            margin-top: -210px !important; /* Ajusta este valor para mover el botón verticalmente. */
-
-            /* Si quieres moverlo horizontalmente de forma independiente: */
-
-            /* position: relative; */
-
-            /* left: 10px !important; */ /* Mueve 10px a la derecha de su posición centrada */
-
-            /* O si quieres moverlo a la derecha: */
-
-            /* margin-left: auto !important; */
-
-            /* margin-right: 20px !important; */
-
-        }
-
-    }
     </style>
 """, unsafe_allow_html=True)
 
