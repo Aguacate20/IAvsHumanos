@@ -166,7 +166,7 @@ st.markdown("""
         div[data-testid="column"]:nth-child(1) .slider-label { /* Etiqueta IA */
             position: relative; /* ¡CLAVE! */
             left: 130px !important; /* Mueve horizontalmente. Ajusta para alinear con la imagen. */
-            top: 300px !important; /* Mueve verticalmente. */
+            top: 270px !important; /* Mueve verticalmente. */
         }
         div[data-testid="column"]:nth-child(3) .slider-label { /* Etiqueta Humano */
             position: relative; /* ¡CLAVE! */
