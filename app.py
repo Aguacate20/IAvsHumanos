@@ -111,8 +111,8 @@ st.markdown("""
         text-align: center;
         vertical-align: middle;
         line-height: 40px; /* Match slider height */
-        margin-left: -100px; /* Mueve "IA" a la izquierda en col1 */
-        margin-right: 100px; /* Mueve "Humano" a la derecha en col3 */
+        margin-left: -150px; /* Mueve "IA" a la izquierda en col1 */
+        margin-right: 300px; /* Mueve "Humano" a la derecha en col3 */
     }
     .situation-text {
         font-weight: bold;
