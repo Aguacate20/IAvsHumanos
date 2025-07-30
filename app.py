@@ -123,16 +123,18 @@ st.markdown("""
         cursor: not-allowed !important;
     }
     div[data-testid="column"]:nth-child(1) img {
-        width: 400px; /* Debe coincidir con el width de st.image */
+        width: 400px; /* Coincide con st.image */
         height: auto;
         display: block;
-        margin-right: 50px; /* Aumenta para mover "IA" más a la izquierda */
+        margin-right: 80px !important; /* Aumenta para mover "IA" más a la izquierda */
+        margin-left: 0px !important; /* Evita centrado */
     }
     div[data-testid="column"]:nth-child(3) img {
-        width: 400px; /* Debe coincidir con el width de st.image */
+        width: 400px; /* Coincide con st.image */
         height: auto;
         display: block;
-        margin-left: 50px; /* Aumenta para mover "Humano" más a la derecha */
+        margin-left: 80px !important; /* Aumenta para mover "Humano" más a la derecha */
+        margin-right: 0px !important; /* Evita centrado */
     }
     </style>
 """, unsafe_allow_html=True)
