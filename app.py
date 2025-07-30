@@ -170,7 +170,7 @@ st.markdown("""
         }
         div[data-testid="column"]:nth-child(3) .slider-label { /* Etiqueta Humano */
             position: relative; /* ¡CLAVE! */
-            right: -80px !important; /* Mueve horizontalmente. Ajusta para alinear con la imagen. */
+            right: -20px !important; /* Mueve horizontalmente. Ajusta para alinear con la imagen. */
             top: -229px !important; /* Mueve verticalmente. */
         }
 
