@@ -193,7 +193,7 @@ st.markdown("""
         /* Para el botón, 'margin-top' sigue siendo efectivo para el movimiento vertical. */
         /* Para el horizontal, si quieres sacarlo del centro, puedes usar 'position: relative' */
         .stButton>button {
-            margin-top: 30px !important; /* Ajusta este valor para mover el botón verticalmente. */
+            margin-top: 80px !important; /* Ajusta este valor para mover el botón verticalmente. */
             /* Si quieres moverlo horizontalmente de forma independiente: */
             /* position: relative; */
             /* left: 10px !important; */ /* Mueve 10px a la derecha de su posición centrada */
