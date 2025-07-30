@@ -174,7 +174,7 @@ st.markdown("""
     /* Etiqueta IA */
     div[data-testid="column"]:nth-child(1) .slider-label {
         position: absolute;
-        left: 330px !important;
+        left: 130px !important;
         top: 200px !important;
     }
 
