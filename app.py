@@ -188,7 +188,7 @@ st.markdown("""
     /* Texto de situación */
     .situation-text {
         position: absolute;
-        top: 10px !important;
+        top: 100px !important;
         left: 10px !important;
         width: 90%;
     }
