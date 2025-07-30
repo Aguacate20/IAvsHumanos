@@ -151,7 +151,7 @@ st.markdown("""
             width: 120px !important; /* Ajusta el ancho de la imagen. Prueba con valores como 100px, 150px, etc. */
             height: auto !important; /* Mantiene la proporción */
             margin-left: -50px !important; /* Mueve horizontalmente. Valores negativos mueven a la izquierda. */
-            margin-top: 100px !important; /* Mueve verticalmente. Valores positivos mueven hacia abajo. */
+            margin-top: 10px !important; /* Mueve verticalmente. Valores positivos mueven hacia abajo. */
             /* Si necesitas un control más preciso, puedes usar position: relative; y top/left/right/bottom */
             /* position: relative; */
             /* top: 10px; */
