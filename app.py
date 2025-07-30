@@ -179,7 +179,7 @@ st.markdown("""
 
         /* Bloque para modificar la posición de la situación */
         .situation-text {
-            margin-top: 100px !important; /* Ajusta este valor para mover la situación verticalmente. */
+            margin-top: 200px !important; /* Ajusta este valor para mover la situación verticalmente. */
             /* Si quieres moverla horizontalmente (aunque ya está centrada), puedes usar: */
             /* text-align: left !important; */
             /* margin-left: 10px !important; */
