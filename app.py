@@ -246,19 +246,19 @@ def main():
     elif st.session_state.screen == "screen_3":
         situation = get_current_situation(st.session_state.situation_index)
         if situation == "FINISHED":
-            st.markdown("<h3>¡Gracias por participar!</h3>", unsafe_allow_html=True)
+            st.markdown("<h3>¡Gracias por participar! Tus respuestas han sido guardadas, puedes cerrar esta página.</h3>", unsafe_allow_html=True)
             return
         
         col1, col2, col3 = st.columns([1, 3, 1])
         with col1:
             response = requests.get("https://raw.githubusercontent.com/SebastianFullStack/images/main/IA.png")
             img_ai = Image.open(BytesIO(response.content))
-            st.image(img_ai, caption="Imagen IA", use_column_width=True)
+            st.image(img_ai, caption="Imagen IA", use_column_width=False)
             st.markdown("<span class='slider-label'>IA</span>", unsafe_allow_html=True)
         with col3:
             response = requests.get("https://raw.githubusercontent.com/SebastianFullStack/images/main/Humano.png")
             img_human = Image.open(BytesIO(response.content))
-            st.image(img_human, caption="Imagen Humano", use_column_width=True)
+            st.image(img_human, caption="Imagen Humano", use_column_width=False)
             st.markdown("<span class='slider-label'>Humano</span>", unsafe_allow_html=True)
         
         with col2:
