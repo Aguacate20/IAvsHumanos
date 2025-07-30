@@ -123,7 +123,7 @@ st.markdown("""
         cursor: not-allowed !important;
     }
     .image-container img {
-        width: 200px;
+        width: 100px;
         height: auto;
         display: block;
         margin-left: auto;
