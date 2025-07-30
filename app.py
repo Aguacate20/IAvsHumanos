@@ -167,7 +167,7 @@ st.markdown("""
         width: 190px !important;
         height: auto !important;
         position: absolute;
-        left: 122px !important;
+        left: 118px !important;
         top: -6.5px !important;
     }
 
