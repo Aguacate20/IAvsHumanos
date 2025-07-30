@@ -147,64 +147,68 @@ st.markdown("""
     /* Media query para pantallas más pequeñas (ej. celulares) */
     @media (max-width: 768px) {
 
-    /* 1. y 2. Tamaño y Posición de las Imágenes */
+    /* El contenedor principal que actuará como referencia */
+    .layout-wrapper {
+        position: relative;
+        height: 600px; /* Ajusta según lo que necesites */
+    }
 
-    div[data-testid="column"]:nth-child(1) img { /* Imagen IA */
+    /* Imagen IA */
+    div[data-testid="column"]:nth-child(1) img {
         width: 190px !important;
         height: auto !important;
-        position: relative;
+        position: absolute;
         left: 330px !important;
-        top: 199.5px !important;
+        top: 200px !important;
     }
 
-    div[data-testid="column"]:nth-child(3) img { /* Imagen Humano */
+    /* Imagen Humano */
+    div[data-testid="column"]:nth-child(3) img {
         width: 190px !important;
         height: auto !important;
-        position: relative;
-        right: -130px !important;
-        top: -300px !important;
+        position: absolute;
+        left: 50px !important;
+        top: 100px !important;
     }
 
-    /* 3. Posición de las Etiquetas "IA" y "Humano" */
-
-    div[data-testid="column"]:nth-child(1) .slider-label { /* Etiqueta IA */
-        position: relative;
-        left: 130px !important;
-        top: 225px !important;
+    /* Etiqueta IA */
+    div[data-testid="column"]:nth-child(1) .slider-label {
+        position: absolute;
+        left: 330px !important;
+        top: 400px !important;
     }
 
-    div[data-testid="column"]:nth-child(3) .slider-label { /* Etiqueta Humano */
-        position: relative;
-        right: -20px !important;
-        top: -280px !important;
+    /* Etiqueta Humano */
+    div[data-testid="column"]:nth-child(3) .slider-label {
+        position: absolute;
+        left: 70px !important;
+        top: 400px !important;
     }
 
-    /* Bloque para modificar la posición de la situación */
-
+    /* Texto de situación */
     .situation-text {
-        position: relative;
-        top: -200px !important;
-        /* left: 150px !important; */
-        /* text-align: left !important; */
+        position: absolute;
+        top: 10px !important;
+        left: 10px !important;
+        width: 90%;
     }
 
-    /* Ajuste del slider para que ocupe más espacio en pantallas pequeñas */
-
+    /* Slider */
     .stSlider {
-        width: 100% !important;
-        margin: 20px auto !important;
+        position: absolute;
+        top: 450px !important;
+        left: 20px !important;
+        width: 90% !important;
     }
 
-    /* 4. Posición del Botón "Siguiente" */
-
+    /* Botón */
     .stButton>button {
-        margin-top: -210px !important;
-        /* position: relative; */
-        /* left: 10px !important; */
-        /* margin-left: auto !important; */
-        /* margin-right: 20px !important; */
+        position: absolute;
+        top: 530px !important;
+        left: 20px !important;
     }
 }
+
 
     </style>
 """, unsafe_allow_html=True)
