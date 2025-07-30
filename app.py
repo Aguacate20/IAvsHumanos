@@ -158,7 +158,7 @@ st.markdown("""
         width: 190px !important;
         height: auto !important;
         position: absolute;
-        left: 325px !important;
+        left: 320px !important;
         top: 100px !important;
     }
 
@@ -167,7 +167,7 @@ st.markdown("""
         width: 190px !important;
         height: auto !important;
         position: absolute;
-        left: 115px !important;
+        left: 120px !important;
         top: -6.5px !important;
     }
 
