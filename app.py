@@ -182,7 +182,7 @@ st.markdown("""
     div[data-testid="column"]:nth-child(3) .slider-label {
         position: absolute;
         left: 20px !important;
-        top: 110px !important;
+        top: 115px !important;
     }
 
     /* Texto de situación */
