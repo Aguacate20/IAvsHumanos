@@ -148,7 +148,7 @@ st.markdown("""
     @media (max-width: 768px) {
         /* 1. y 2. Tamaño y Posición de las Imágenes */
         div[data-testid="column"]:nth-child(1) img { /* Imagen IA */
-            width: 120px !important; /* Ajusta el ancho de la imagen. Prueba con valores como 100px, 150px, etc. */
+            width: 1200px !important; /* Ajusta el ancho de la imagen. Prueba con valores como 100px, 150px, etc. */
             height: auto !important; /* Mantiene la proporción */
             position: relative; /* ¡CLAVE! Permite mover el elemento sin afectar el flujo */
             left: 50px !important; /* Mueve horizontalmente. Valores negativos mueven a la izquierda. */
