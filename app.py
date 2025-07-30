@@ -151,7 +151,7 @@ st.markdown("""
             width: 190px !important; /* Ajusta el ancho de la imagen. Prueba con valores como 100px, 150px, etc. */
             height: auto !important; /* Mantiene la proporción */
             position: relative; /* ¡CLAVE! Permite mover el elemento sin afectar el flujo */
-            left: 320px !important; /* Mueve horizontalmente. Valores negativos mueven a la izquierda. */
+            left: 330px !important; /* Mueve horizontalmente. Valores negativos mueven a la izquierda. */
             top: 90px !important; /* Mueve verticalmente. Valores positivos mueven hacia abajo. */
         }
         div[data-testid="column"]:nth-child(3) img { /* Imagen Humano */
