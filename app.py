@@ -122,12 +122,17 @@ st.markdown("""
         color: white !important;
         cursor: not-allowed !important;
     }
-    .stImage > img {
-    width: 350px; /* Mantén o ajusta el tamaño */
+    div[data-testid="column"]:nth-child(1) img {
+    width: 400px; /* Debe coincidir con el width de st.image */
     height: auto;
     display: block;
-    margin-left: 10px; /* Aumenta este valor para mover la imagen en col1 (IA) a la izquierda */
-    margin-right: 10px; /* Aumenta este valor para mover la imagen en col3 (Humano) a la derecha */
+    margin-right: 50px; /* Aumenta para mover "IA" más a la izquierda */
+    }
+    div[data-testid="column"]:nth-child(3) img {
+        width: 400px; /* Debe coincidir con el width de st.image */
+        height: auto;
+        display: block;
+        margin-left: 50px; /* Aumenta para mover "Humano" más a la derecha */
     }
     </style>
 """, unsafe_allow_html=True)
