@@ -111,8 +111,14 @@ st.markdown("""
         text-align: center;
         vertical-align: middle;
         line-height: 40px; /* Match slider height */
-        margin-left: -150px; /* Mueve "IA" a la izquierda en col1 */
-        margin-right: 800px; /* Mueve "Humano" a la derecha en col3 */
+    }
+    div[data-testid="column"]:nth-child(1) .slider-label {
+        margin-right: 40px !important; /* Mueve "IA" más a la izquierda */
+        margin-left: 0px !important; /* Evita desplazamiento no deseado */
+    }
+    div[data-testid="column"]:nth-child(3) .slider-label {
+        margin-left: 40px !important; /* Mueve "Humano" más a la derecha */
+        margin-right: 0px !important; /* Evita desplazamiento no deseado */
     }
     .situation-text {
         font-weight: bold;
