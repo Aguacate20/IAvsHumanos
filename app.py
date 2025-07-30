@@ -12,7 +12,7 @@ supabase_client = supabase.create_client(st.secrets["secrets"]["NEXT_PUBLIC_SUPA
 
 # Situations list
 situations = [
-    "Esta es una situación de prueba para que te familiarices con el slider. ¿Qué tan útil te parece?",
+    "Esta es una situación de prueba, utiliza el deslizador para elegir cuál de los 2 agentes preferirías que te orientara/te diera un consejo/te ayudara en cada una de las siguientes situaciones",
     "¿Qué hago si quiero saber a quién contarle primero que voy a ser papá o mamá?",
     "¿Qué hago si no sé cómo avisarles a mis padres que tengo malas calificaciones?",
     "¿Qué hago si quiero cuidar bien a un bebé?",
@@ -120,7 +120,7 @@ st.markdown("""
         cursor: not-allowed !important;
     }
     .image-container img {
-        width: 250px;
+        width: 400px;
         height: auto;
     }
     .agent-label {
