@@ -167,8 +167,8 @@ st.markdown("""
         width: 190px !important;
         height: auto !important;
         position: absolute;
-        left: 50px !important;
-        top: -7px !important;
+        left: 100px !important;
+        top: -6.5px !important;
     }
 
     /* Etiqueta IA */
