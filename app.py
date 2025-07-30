@@ -55,6 +55,7 @@ def save_questionnaire_data(data):
         response = supabase_client.table("respuestas").insert({
             "consentimiento": data["consentimiento"],
             "name": data["data.name"],
+            "nationality": data["data.nationality"],
             "birthdate": data["data.birthdate"],
             "devices": data["data.devices"],
             "tech_time": data["data.tech"],
@@ -236,6 +237,7 @@ def main():
         consent = st.selectbox("¿Acepta participar en la recolección de datos anteriormente descrita?", ["Sí", "No"], key="consent")
         st.subheader("Por favor complete el siguiente cuestionario")
         name = st.text_input("Nombres y apellidos", key="name")
+        nationality = st.text_input("Nacionalidad", key="nationality")
         birthdate = st.date_input("Fecha de nacimiento", min_value=datetime(1900, 1, 1), key="birthdate")
         
         devices_options = [
