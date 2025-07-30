@@ -128,8 +128,8 @@ st.markdown("""
     display: block;
     margin-left: auto;
     margin-right: auto;
-    margin-left: 20px; /* Aumenta este valor para mover la imagen en col1 (IA) a la izquierda */
-    margin-right: 20px; /* Aumenta este valor para mover la imagen en col3 (Humano) a la derecha */
+    margin-left: 50px; /* Aumenta este valor para mover la imagen en col1 (IA) a la izquierda */
+    margin-right: 50px; /* Aumenta este valor para mover la imagen en col3 (Humano) a la derecha */
     }
     </style>
 """, unsafe_allow_html=True)
@@ -255,12 +255,12 @@ def main():
         with col1:
             response = requests.get("https://raw.githubusercontent.com/SebastianFullStack/images/main/IA.png")
             img_ai = Image.open(BytesIO(response.content))
-            st.image(img_ai, caption=" ", use_column_width=False, width=300)
+            st.image(img_ai, caption=" ", use_column_width=False, width=500)
             st.markdown("<span class='slider-label'>IA</span>", unsafe_allow_html=True)
         with col3:
             response = requests.get("https://raw.githubusercontent.com/SebastianFullStack/images/main/Humano.png")
             img_human = Image.open(BytesIO(response.content))
-            st.image(img_human, caption=" ", use_column_width=False, width=300)
+            st.image(img_human, caption=" ", use_column_width=False, width=500)
             st.markdown("<span class='slider-label'>Humano</span>", unsafe_allow_html=True)
         
         with col2:
