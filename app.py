@@ -159,7 +159,7 @@ st.markdown("""
         height: auto !important;
         position: absolute;
         left: 330px !important;
-        top: 20px !important;
+        top: -20px !important;
     }
 
     /* Imagen Humano */
