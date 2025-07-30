@@ -126,7 +126,7 @@ st.markdown("""
     width: 350px; /* Mantén o ajusta el tamaño */
     height: auto;
     display: block;
-    margin-left: 50px; /* Aumenta este valor para mover la imagen en col1 (IA) a la izquierda */
+    margin-left: 150px; /* Aumenta este valor para mover la imagen en col1 (IA) a la izquierda */
     margin-right: 50px; /* Aumenta este valor para mover la imagen en col3 (Humano) a la derecha */
     }
     </style>
