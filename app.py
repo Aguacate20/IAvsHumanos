@@ -127,7 +127,7 @@ st.markdown("""
         height: auto;
         display: block;
         margin-right: 50px !important; /* Aumenta para mover "IA" más a la izquierda */
-        margin-left: -200px !important; /* Evita centrado */
+        margin-left: -300px !important; /* Evita centrado */
     }
     div[data-testid="column"]:nth-child(3) img {
         width: 400px; /* Coincide con st.image */
