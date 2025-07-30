@@ -179,7 +179,7 @@ st.markdown("""
             position: relative; /* ¡CLAVE! */
             top: -200px !important; /* Ajusta este valor para mover la situación verticalmente. */
             /* Para moverla horizontalmente, puedes usar 'left' o 'right' */
-            /* left: 10px !important; */
+            /* left: 150px !important; */
             /* text-align: left !important; */ /* Si quieres cambiar la alineación del texto */
         }
 
