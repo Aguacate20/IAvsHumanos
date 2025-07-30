@@ -114,7 +114,7 @@ st.markdown("""
     }
     div[data-testid="column"]:nth-child(1) .slider-label {
         margin-right: 100px !important; /* Mueve "IA" más a la izquierda */
-        margin-left: -160px !important; /* Evita desplazamiento no deseado */
+        margin-left: -170px !important; /* Evita desplazamiento no deseado */
     }
     div[data-testid="column"]:nth-child(3) .slider-label {
         margin-left: 230px !important; /* Mueve "Humano" más a la derecha */
@@ -135,7 +135,7 @@ st.markdown("""
         height: auto;
         display: block;
         margin-right: 50px !important; /* Aumenta para mover "IA" más a la izquierda */
-        margin-left: -350px !important; /* Evita centrado */
+        margin-left: -360px !important; /* Evita centrado */
     }
     div[data-testid="column"]:nth-child(3) img {
         width: 400px; /* Coincide con st.image */
