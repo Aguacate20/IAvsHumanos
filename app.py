@@ -253,12 +253,12 @@ def main():
         with col1:
             response = requests.get("https://raw.githubusercontent.com/SebastianFullStack/images/main/IA.png")
             img_ai = Image.open(BytesIO(response.content))
-            st.image(img_ai, caption="Imagen IA", use_column_width=False)
+            st.image(img_ai, caption=" ", use_column_width=False, width=200)
             st.markdown("<span class='slider-label'>IA</span>", unsafe_allow_html=True)
         with col3:
             response = requests.get("https://raw.githubusercontent.com/SebastianFullStack/images/main/Humano.png")
             img_human = Image.open(BytesIO(response.content))
-            st.image(img_human, caption="Imagen Humano", use_column_width=False)
+            st.image(img_human, caption=" ", use_column_width=False, width=200)
             st.markdown("<span class='slider-label'>Humano</span>", unsafe_allow_html=True)
         
         with col2:
