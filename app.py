@@ -169,7 +169,7 @@ st.markdown("""
 
         /* 3. Posición de las Etiquetas "IA" y "Humano" */
         div[data-testid="column"]:nth-child(1) .slider-label { /* Etiqueta IA */
-            margin-left: -20px !important; /* Mueve horizontalmente. Ajusta para alinear con la imagen. */
+            margin-left: 10px !important; /* Mueve horizontalmente. Ajusta para alinear con la imagen. */
             margin-top: 5px !important; /* Mueve verticalmente. */
         }
         div[data-testid="column"]:nth-child(3) .slider-label { /* Etiqueta Humano */
