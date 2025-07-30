@@ -120,7 +120,7 @@ st.markdown("""
         cursor: not-allowed !important;
     }
     .image-container img {
-        width: 400px;
+        width: 800px;
         height: auto;
     }
     .agent-label {
