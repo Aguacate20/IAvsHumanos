@@ -52,7 +52,7 @@ def get_current_situation(situation_index):
 # Function to save questionnaire data to Supabase
 def save_questionnaire_data(data):
     try:
-        response = supabase_client.table("respuestas").insert({
+        response = supabase_client.table("Respuestas").insert({
             "consentimiento": data["consentimiento"],
             "name": data["data.name"],
             "birthdate": data["data.birthdate"],
@@ -73,7 +73,7 @@ def save_questionnaire_data(data):
 # Function to save situation response to Supabase
 def save_situation_response(participant_id, situation_index, response_time, slider_value):
     result = f"{slider_value} - {response_time}"
-    supabase_client.table("situationresponses").insert({
+    supabase_client.table("SituationResponses").insert({
         "participant_id": participant_id,
         "situation_index": situation_index,
         "response": result
@@ -119,14 +119,14 @@ st.markdown("""
         color: white !important;
         cursor: not-allowed !important;
     }
-    .image-container {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-    }
     .image-container img {
-        width: 150px;
+        width: 250px;
         height: auto;
+    }
+    .agent-label {
+        font-weight: bold;
+        text-align: center;
+        margin-top: 10px;
     }
     </style>
 """, unsafe_allow_html=True)
@@ -253,10 +253,12 @@ def main():
             response = requests.get("https://raw.githubusercontent.com/SebastianFullStack/images/main/IA.png")
             img_ai = Image.open(BytesIO(response.content))
             st.image(img_ai, caption="Imagen IA", use_column_width=True)
+            st.markdown("<div class='agent-label'>IA</div>", unsafe_allow_html=True)
         with col3:
             response = requests.get("https://raw.githubusercontent.com/SebastianFullStack/images/main/Humano.png")
             img_human = Image.open(BytesIO(response.content))
             st.image(img_human, caption="Imagen Humano", use_column_width=True)
+            st.markdown("<div class='agent-label'>Humano</div>", unsafe_allow_html=True)
         
         with col2:
             st.markdown(f"<div class='situation-text'>{situation}</div>", unsafe_allow_html=True)
