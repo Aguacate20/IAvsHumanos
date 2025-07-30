@@ -185,7 +185,7 @@ st.markdown("""
 
         /* Ajuste del slider para que ocupe más espacio en pantallas pequeñas */
         .stSlider {
-            width: 90% !important;
+            width: 100% !important;
             margin: 20px auto !important; /* Centra el slider */
         }
 
