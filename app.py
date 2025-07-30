@@ -123,10 +123,10 @@ st.markdown("""
         cursor: not-allowed !important;
     }
     div[data-testid="column"]:nth-child(1) img {
-    width: 400px; /* Debe coincidir con el width de st.image */
-    height: auto;
-    display: block;
-    margin-right: 50px; /* Aumenta para mover "IA" más a la izquierda */
+        width: 400px; /* Debe coincidir con el width de st.image */
+        height: auto;
+        display: block;
+        margin-right: 50px; /* Aumenta para mover "IA" más a la izquierda */
     }
     div[data-testid="column"]:nth-child(3) img {
         width: 400px; /* Debe coincidir con el width de st.image */
