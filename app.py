@@ -114,10 +114,10 @@ st.markdown("""
     }
     div[data-testid="column"]:nth-child(1) .slider-label {
         margin-right: 100px !important; /* Mueve "IA" más a la izquierda */
-        margin-left: -200px !important; /* Evita desplazamiento no deseado */
+        margin-left: -170px !important; /* Evita desplazamiento no deseado */
     }
     div[data-testid="column"]:nth-child(3) .slider-label {
-        margin-left: 200px !important; /* Mueve "Humano" más a la derecha */
+        margin-left: 220px !important; /* Mueve "Humano" más a la derecha */
         margin-right: 0px !important; /* Evita desplazamiento no deseado */
     }
     .situation-text {
