@@ -206,6 +206,17 @@ st.markdown("""
         position: absolute;
         top: 170px !important;
         left: 100px !important;
+    .screen_1 .stButton>button {
+        position: relative;
+        margin-top: 50px !important;
+        left: 0px !important;
+    }
+
+    /* Para screen_2 */
+    .screen_2 .stButton>button {
+        position: relative;
+        margin-top: 100px !important;
+        left: 10px !important;
     }
 }
 
