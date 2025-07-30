@@ -146,88 +146,118 @@ st.markdown("""
     }
     /* Media query para pantallas más pequeñas (ej. celulares) */
     @media (max-width: 768px) {
-        /* IMPORTANTE: Hacemos las columnas "relativas" para que sean el contexto de posicionamiento */
-        div[data-testid="column"]:nth-child(1),
-        div[data-testid="column"]:nth-child(2), /* Columna central para el texto y slider */
-        div[data-testid="column"]:nth-child(3) {
-            position: relative !important; /* Cada columna será un punto de referencia para sus hijos absolutos */
-            /* Puedes ajustar el ancho de las columnas si es necesario, pero ten cuidado de no romper el layout */
-            /* Por ejemplo, para dar más espacio a la columna central: */
-            /* div[data-testid="column"]:nth-child(1) { width: 20% !important; } */
-            /* div[data-testid="column"]:nth-child(2) { width: 60% !important; } */
-            /* div[data-testid="column"]:nth-child(3) { width: 20% !important; } */
-        }
 
-        /* 1. y 2. Tamaño y Posición de las Imágenes */
-        div[data-testid="column"]:nth-child(1) img { /* Imagen IA */
-            width: 190px !important; /* Ajusta el ancho de la imagen */
-            height: auto !important; /* Mantiene la proporción */
-            position: absolute !important; /* ¡AHORA ES ABSOLUTA! */
-            left: 330px !important; /* Posición horizontal desde el borde izquierdo de su columna */
-            top: 199.5px !important; /* Posición vertical desde el borde superior de su columna */
-            /* NOTA: Estos valores son los que proporcionaste. Es posible que necesites reajustarlos */
-            /* ya que la referencia de posicionamiento ha cambiado a la columna padre. */
-        }
-        div[data-testid="column"]:nth-child(3) img { /* Imagen Humano */
-            width: 190px !important; /* Ajusta el ancho */
-            height: auto !important;
-            position: absolute !important; /* ¡AHORA ES ABSOLUTA! */
-            right: -130px !important; /* Posición horizontal desde el borde derecho de su columna */
-            top: -300px !important; /* Posición vertical desde el borde superior de su columna */
-            /* NOTA: Estos valores son los que proporcionaste. Es posible que necesites reajustarlos */
-            /* ya que la referencia de posicionamiento ha cambiado a la columna padre. */
-        }
+        /* 1. y 2. Tamaño y Posición de las Imágenes */
 
-        /* 3. Posición de las Etiquetas "IA" y "Humano" */
-        div[data-testid="column"]:nth-child(1) .slider-label { /* Etiqueta IA */
-            position: absolute !important; /* ¡AHORA ES ABSOLUTA! */
-            left: 130px !important; /* Posición horizontal. Ajusta para alinear con la imagen. */
-            top: 225px !important; /* Posición vertical. Ajusta para que quede debajo de la imagen. */
-            /* NOTA: Estos valores son los que proporcionaste. Es posible que necesites reajustarlos */
-            /* ya que la referencia de posicionamiento ha cambiado a la columna padre. */
-        }
-        div[data-testid="column"]:nth-child(3) .slider-label { /* Etiqueta Humano */
-            position: absolute !important; /* ¡AHORA ES ABSOLUTA! */
-            right: -20px !important; /* Posición horizontal. Ajusta para alinear con la imagen. */
-            top: -280px !important; /* Posición vertical. Ajusta para que quede debajo de la imagen. */
-            /* NOTA: Estos valores son los que proporcionaste. Es posible que necesites reajustarlos */
-            /* ya que la referencia de posicionamiento ha cambiado a la columna padre. */
-        }
+        div[data-testid="column"]:nth-child(1) img { /* Imagen IA */
 
-        /* Bloque para modificar la posición de la situación */
-        .situation-text {
-            /* Mantenemos relative para que fluya dentro de su columna central */
-            /* y se centre automáticamente. Si lo haces absolute, podría superponerse */
-            /* con otros elementos si el texto es muy largo. */
-            position: relative !important;
-            top: -200px !important; /* Ajusta este valor para mover la situación verticalmente. */
-            /* Si necesitas moverla horizontalmente dentro de la columna: */
-            /* left: 150px !important; */
-            /* text-align: left !important; */
-        }
+            width: 190px !important; /* Ajusta el ancho de la imagen. Prueba con valores como 100px, 150px, etc. */
 
-        /* Ajuste del slider para que ocupe más espacio en pantallas pequeñas */
-        .stSlider {
-            width: 100% !important;
-            margin: 20px auto !important; /* Centra el slider */
-        }
+            height: auto !important; /* Mantiene la proporción */
 
-        /* 4. Posición del Botón "Siguiente" */
-        /* Para que el botón sea completamente estático y no se mueva con el contenido, */
-        /* lo haremos 'position: absolute' relativo al contenedor principal '.main' */
-        /* o al 'body' si quieres que esté fijo en la ventana de navegación. */
-        /* Para este caso, lo haremos relativo al 'body' o 'main' para mayor control. */
-        /* Asumiremos que '.main' es el contenedor principal y Streamlit le da 'position: relative' */
-        .stButton>button {
-            position: absolute !important; /* ¡AHORA ES ABSOLUTO! */
-            bottom: 20px !important; /* Posición vertical desde el borde inferior de la pantalla/contenedor */
-            left: 50% !important; /* Para centrarlo horizontalmente */
-            transform: translateX(-50%) !important; /* Complemento para centrarlo horizontalmente */
-            margin-top: 0 !important; /* Anulamos el margin-top anterior */
-            width: 80% !important; /* Puedes ajustar el ancho del botón */
-            max-width: 200px !important; /* O un ancho máximo */
-        }
-    }
+            position: relative; /* ¡CLAVE! Permite mover el elemento sin afectar el flujo */
+
+            left: 330px !important; /* Mueve horizontalmente. Valores negativos mueven a la izquierda. */
+
+            top: 199.5px !important; /* Mueve verticalmente. Valores positivos mueven hacia abajo. */
+
+        }
+
+        div[data-testid="column"]:nth-child(3) img { /* Imagen Humano */
+
+            width: 190px !important; /* Ajusta el ancho */
+
+            height: auto !important;
+
+            position: relative; /* ¡CLAVE! */
+
+            right: -130px !important; /* Mueve horizontalmente. Valores negativos mueven a la derecha. */
+
+            top: -300px !important; /* Mueve verticalmente */
+
+        }
+
+
+
+        /* 3. Posición de las Etiquetas "IA" y "Humano" */
+
+        div[data-testid="column"]:nth-child(1) .slider-label { /* Etiqueta IA */
+
+            position: relative; /* ¡CLAVE! */
+
+            left: 130px !important; /* Mueve horizontalmente. Ajusta para alinear con la imagen. */
+
+            top: 225px !important; /* Mueve verticalmente. */
+
+        }
+
+        div[data-testid="column"]:nth-child(3) .slider-label { /* Etiqueta Humano */
+
+            position: relative; /* ¡CLAVE! */
+
+            right: -20px !important; /* Mueve horizontalmente. Ajusta para alinear con la imagen. */
+
+            top: -280px !important; /* Mueve verticalmente. */
+
+        }
+
+
+
+        /* Bloque para modificar la posición de la situación */
+
+        .situation-text {
+
+            position: relative; /* ¡CLAVE! */
+
+            top: -200px !important; /* Ajusta este valor para mover la situación verticalmente. */
+
+            /* Para moverla horizontalmente, puedes usar 'left' o 'right' */
+
+            /* left: 150px !important; */
+
+            /* text-align: left !important; */ /* Si quieres cambiar la alineación del texto */
+
+        }
+
+
+
+        /* Ajuste del slider para que ocupe más espacio en pantallas pequeñas */
+
+        .stSlider {
+
+            width: 100% !important;
+
+            margin: 20px auto !important; /* Centra el slider */
+
+        }
+
+
+
+        /* 4. Posición del Botón "Siguiente" */
+
+        /* Para el botón, 'margin-top' sigue siendo efectivo para el movimiento vertical. */
+
+        /* Para el horizontal, si quieres sacarlo del centro, puedes usar 'position: relative' */
+
+        .stButton>button {
+
+            margin-top: -210px !important; /* Ajusta este valor para mover el botón verticalmente. */
+
+            /* Si quieres moverlo horizontalmente de forma independiente: */
+
+            /* position: relative; */
+
+            /* left: 10px !important; */ /* Mueve 10px a la derecha de su posición centrada */
+
+            /* O si quieres moverlo a la derecha: */
+
+            /* margin-left: auto !important; */
+
+            /* margin-right: 20px !important; */
+
+        }
+
+    }
     </style>
 """, unsafe_allow_html=True)
 
