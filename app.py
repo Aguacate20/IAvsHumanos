@@ -144,6 +144,30 @@ st.markdown("""
         margin-left: 30px !important; /* Aumenta para mover "Humano" más a la derecha */
         margin-right: 0px !important; /* Evita centrado */
     }
+    /* Media query para pantallas más pequeñas (ej. celulares) */
+    @media (max-width: 768px) {
+        div [data-testid="column"]:nth-child(1) img {
+            width: 150px !important; /* Ajusta el ancho para pantallas pequeñas */
+            margin-left: -100px !important;
+            margin-right: 20px !important;
+        }
+        div [data-testid="column"]:nth-child(3) img {
+            width: 150px !important; /* Ajusta el ancho para pantallas pequeñas */
+            margin-left: 20px !important;
+            margin-right: 0px !important;
+        }
+        div [data-testid="column"]:nth-child(1) .slider-label {
+            margin-right: 10px !important;
+            margin-left: -50px !important;
+        }
+        div [data-testid="column"]:nth-child(3) .slider-label {
+            margin-left: 50px !important;
+            margin-right: 0px !important;
+        }
+        .stSlider {
+            width: 90%; /* Haz el slider más ancho en pantallas pequeñas */
+        }
+    }
     </style>
 """, unsafe_allow_html=True)
 
