@@ -42,7 +42,7 @@ situations = [
     "¿Qué hago si quiero vengarme de alguien?",
     "¿Qué hago si quiero saber cuál es el mejor momento del año para ir a la playa?",
     "¿Qué hago si quiero saber qué sentido tiene mi vida?",
-    "¿QUé hago si me siento alegre y quiero saber si debería hablar con alguien de eso?"
+    "¿Qué hago si me siento alegre y quiero saber si debería hablar con alguien de eso?"
 ]
 
 # Function to get current situation
@@ -51,25 +51,29 @@ def get_current_situation(situation_index):
 
 # Function to save questionnaire data to Supabase
 def save_questionnaire_data(data):
-    response = supabase_client.table("respuestas").insert({
-        "consentimiento": data["consentimiento"],
-        "name": data["data.name"],
-        "birthdate": data["data.birthdate"],
-        "devices": data["data.devices"],
-        "tech_time": data["data.tech"],
-        "socio_stratum": data["data.socioStratum"],
-        "ai_knowledge": data["ai.knowledge"],
-        "ai_trust_epistemic": data["ai.trust.epistemic"],
-        "ai_trust_social": data["ai.trust.social"],
-        "human_trust_epistemic": data["human.trust.epistemic"],
-        "human_trust_social": data["human.trust.social"]
-    }).execute()
-    return response.data[0]["id"]  # Return the participant ID
+    try:
+        response = supabase_client.table("Respuestas").insert({
+            "consentimiento": data["consentimiento"],
+            "name": data["data.name"],
+            "birthdate": data["data.birthdate"],
+            "devices": data["data.devices"],
+            "tech_time": data["data.tech"],
+            "socio_stratum": data["data.socioStratum"],
+            "ai_knowledge": data["ai.knowledge"],
+            "ai_trust_epistemic": data["ai.trust.epistemic"],
+            "ai_trust_social": data["ai.trust.social"],
+            "human_trust_epistemic": data["human.trust.epistemic"],
+            "human_trust_social": data["human.trust.social"]
+        }).execute()
+        return response.data[0]["id"]
+    except Exception as e:
+        st.error(f"Error saving questionnaire data: {str(e)}")
+        return None
 
 # Function to save situation response to Supabase
 def save_situation_response(participant_id, situation_index, response_time, slider_value):
     result = f"{slider_value} - {response_time}"
-    supabase_client.table("situationresponses").insert({
+    supabase_client.table("SituationResponses").insert({
         "participant_id": participant_id,
         "situation_index": situation_index,
         "response": result
@@ -81,6 +85,7 @@ if "screen" not in st.session_state:
     st.session_state.situation_index = 0
     st.session_state.participant_id = None
     st.session_state.start_time = None
+    st.session_state.button_clicked = False
 
 # CSS for styling
 st.markdown("""
@@ -91,6 +96,9 @@ st.markdown("""
     }
     .stButton>button {
         margin-top: 20px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
     }
     .stSlider {
         width: 60%;
@@ -105,6 +113,20 @@ st.markdown("""
         font-weight: bold;
         text-align: center;
         margin-bottom: 10px;
+    }
+    .loading-button {
+        background-color: grey !important;
+        color: white !important;
+        cursor: not-allowed !important;
+    }
+    .image-container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .image-container img {
+        width: 150px;
+        height: auto;
     }
     </style>
 """, unsafe_allow_html=True)
@@ -158,45 +180,67 @@ def main():
         human_trust_social = st.selectbox("¿Qué tanto confías en que otras personas (amigos, profesores, profesionales) pueden ayudarte en situaciones personales o emocionales (como darte consejos, apoyarte o entender cómo te sientes)?", 
                                           [1, 2, 3, 4, 5], key="human_trust_social")
 
-        if st.button("Siguiente", key="questionnaire_submit"):
-            if consent == "No":
-                st.error("Debe aceptar participar para continuar.")
-                return
-            if not name or not birthdate:
-                st.error("Por favor complete todos los campos obligatorios.")
-                return
-            data = {
-                "consentimiento": consent,
-                "data.name": name,
-                "data.birthdate": birthdate.strftime("%Y-%m-%d"),
-                "data.devices": len(devices),
-                "data.tech": tech_time,
-                "data.socioStratum": socioeconomic,
-                "ai.knowledge": ai_knowledge,
-                "ai.trust.epistemic": ai_trust_epistemic,
-                "ai.trust.social": ai_trust_social,
-                "human.trust.epistemic": human_trust_epistemic,
-                "human.trust.social": human_trust_social
-            }
-            st.session_state.participant_id = save_questionnaire_data(data)
-            st.session_state.screen = "screen_1"
+        if not st.session_state.button_clicked:
+            if st.button("Siguiente", key="questionnaire_submit"):
+                st.session_state.button_clicked = True
+                if consent == "No":
+                    st.error("Debe aceptar participar para continuar.")
+                    st.session_state.button_clicked = False
+                    return
+                if not name or not birthdate:
+                    st.error("Por favor complete todos los campos obligatorios.")
+                    st.session_state.button_clicked = False
+                    return
+                data = {
+                    "consentimiento": consent,
+                    "data.name": name,
+                    "data.birthdate": birthdate.strftime("%Y-%m-%d"),
+                    "data.devices": len(devices),
+                    "data.tech": tech_time,
+                    "data.socioStratum": socioeconomic,
+                    "ai.knowledge": ai_knowledge,
+                    "ai.trust.epistemic": ai_trust_epistemic,
+                    "ai.trust.social": ai_trust_social,
+                    "human.trust.epistemic": human_trust_epistemic,
+                    "human.trust.social": human_trust_social
+                }
+                participant_id = save_questionnaire_data(data)
+                if participant_id:
+                    st.session_state.participant_id = participant_id
+                    st.session_state.screen = "screen_1"
+                    st.session_state.button_clicked = False
+                    st.rerun()
+        else:
+            st.markdown('<button class="loading-button" disabled>Cargando</button>', unsafe_allow_html=True)
 
     elif st.session_state.screen == "screen_1":
         st.header("Estos son los agentes que puedes seleccionar para que te orienten en las próximas situaciones")
         response = requests.get("https://raw.githubusercontent.com/SebastianFullStack/images/main/IA.png")
         img = Image.open(BytesIO(response.content))
         st.image(img, caption="Imagen IA", use_column_width=True)
-        if st.button("Siguiente", key="screen_1_next"):
-            st.session_state.screen = "screen_2"
+        if not st.session_state.button_clicked:
+            if st.button("Siguiente", key="screen_1_next"):
+                st.session_state.button_clicked = True
+                st.session_state.screen = "screen_2"
+                st.session_state.button_clicked = False
+                st.rerun()
+        else:
+            st.markdown('<button class="loading-button" disabled>Cargando</button>', unsafe_allow_html=True)
 
     elif st.session_state.screen == "screen_2":
         st.header("Estos son los agentes que puedes seleccionar para que te orienten en las próximas situaciones")
         response = requests.get("https://raw.githubusercontent.com/SebastianFullStack/images/main/Humano.png")
         img = Image.open(BytesIO(response.content))
         st.image(img, caption="Imagen Humano", use_column_width=True)
-        if st.button("Siguiente", key="screen_2_next"):
-            st.session_state.screen = "screen_3"
-            st.session_state.start_time = time.time()
+        if not st.session_state.button_clicked:
+            if st.button("Siguiente", key="screen_2_next"):
+                st.session_state.button_clicked = True
+                st.session_state.screen = "screen_3"
+                st.session_state.start_time = time.time()
+                st.session_state.button_clicked = False
+                st.rerun()
+        else:
+            st.markdown('<button class="loading-button" disabled>Cargando</button>', unsafe_allow_html=True)
 
     elif st.session_state.screen == "screen_3":
         situation = get_current_situation(st.session_state.situation_index)
@@ -204,31 +248,32 @@ def main():
             st.markdown("<h3>¡Gracias por participar!</h3>", unsafe_allow_html=True)
             return
         
-        response = requests.get("https://raw.githubusercontent.com/SebastianFullStack/images/main/IA.png")
-        img_ai = Image.open(BytesIO(response.content))
-        st.image(img_ai, caption="Imagen IA", use_column_width=True)
-        
-        st.markdown(f"<div class='situation-text'>{situation}</div>", unsafe_allow_html=True)
-        
         col1, col2, col3 = st.columns([1, 3, 1])
         with col1:
-            st.markdown("<span class='slider-label'>IA</span>", unsafe_allow_html=True)
-        with col2:
-            slider_value = st.slider("", 0, 100, 50, key="decision_slider")
+            response = requests.get("https://raw.githubusercontent.com/SebastianFullStack/images/main/IA.png")
+            img_ai = Image.open(BytesIO(response.content))
+            st.image(img_ai, caption="Imagen IA", use_column_width=True)
         with col3:
-            st.markdown("<span class='slider-label'>Humano</span>", unsafe_allow_html=True)
+            response = requests.get("https://raw.githubusercontent.com/SebastianFullStack/images/main/Humano.png")
+            img_human = Image.open(BytesIO(response.content))
+            st.image(img_human, caption="Imagen Humano", use_column_width=True)
         
-        response = requests.get("https://raw.githubusercontent.com/SebastianFullStack/images/main/Humano.png")
-        img_human = Image.open(BytesIO(response.content))
-        st.image(img_human, caption="Imagen Humano", use_column_width=True)
+        with col2:
+            st.markdown(f"<div class='situation-text'>{situation}</div>", unsafe_allow_html=True)
+            slider_value = st.slider("", 0, 100, 50, key="decision_slider")
         
-        if st.button("Siguiente", key="situation_submit"):
-            end_time = time.time()
-            response_time = end_time - st.session_state.start_time
-            save_situation_response(st.session_state.participant_id, st.session_state.situation_index, response_time, slider_value)
-            st.session_state.situation_index += 1
-            st.session_state.start_time = time.time()
-            st.rerun()
+        if not st.session_state.button_clicked:
+            if st.button("Siguiente", key="situation_submit"):
+                st.session_state.button_clicked = True
+                end_time = time.time()
+                response_time = end_time - st.session_state.start_time
+                save_situation_response(st.session_state.participant_id, st.session_state.situation_index, response_time, slider_value)
+                st.session_state.situation_index += 1
+                st.session_state.start_time = time.time()
+                st.session_state.button_clicked = False
+                st.rerun()
+        else:
+            st.markdown('<button class="loading-button" disabled>Cargando</button>', unsafe_allow_html=True)
 
 if __name__ == "__main__":
     main()
