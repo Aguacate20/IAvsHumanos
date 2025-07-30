@@ -150,39 +150,37 @@ st.markdown("""
         div[data-testid="column"]:nth-child(1) img { /* Imagen IA */
             width: 120px !important; /* Ajusta el ancho de la imagen. Prueba con valores como 100px, 150px, etc. */
             height: auto !important; /* Mantiene la proporción */
-            margin-left: -50px !important; /* Mueve horizontalmente. Valores negativos mueven a la izquierda. */
-            margin-top: 10px !important; /* Mueve verticalmente. Valores positivos mueven hacia abajo. */
-            /* Si necesitas un control más preciso, puedes usar position: relative; y top/left/right/bottom */
-            /* position: relative; */
-            /* top: 10px; */
-            /* left: -20px; */
+            position: relative; /* ¡CLAVE! Permite mover el elemento sin afectar el flujo */
+            left: -50px !important; /* Mueve horizontalmente. Valores negativos mueven a la izquierda. */
+            top: 10px !important; /* Mueve verticalmente. Valores positivos mueven hacia abajo. */
         }
         div[data-testid="column"]:nth-child(3) img { /* Imagen Humano */
             width: 120px !important; /* Ajusta el ancho */
             height: auto !important;
-            margin-right: -50px !important; /* Mueve horizontalmente. Valores negativos mueven a la derecha. */
-            margin-top: 10px !important; /* Mueve verticalmente */
-            /* position: relative; */
-            /* top: 10px; */
-            /* right: -20px; */
+            position: relative; /* ¡CLAVE! */
+            right: -50px !important; /* Mueve horizontalmente. Valores negativos mueven a la derecha. */
+            top: 10px !important; /* Mueve verticalmente */
         }
 
         /* 3. Posición de las Etiquetas "IA" y "Humano" */
         div[data-testid="column"]:nth-child(1) .slider-label { /* Etiqueta IA */
-            margin-left: 10px !important; /* Mueve horizontalmente. Ajusta para alinear con la imagen. */
-            margin-top: -10px !important; /* Mueve verticalmente. */
+            position: relative; /* ¡CLAVE! */
+            left: -20px !important; /* Mueve horizontalmente. Ajusta para alinear con la imagen. */
+            top: 5px !important; /* Mueve verticalmente. */
         }
         div[data-testid="column"]:nth-child(3) .slider-label { /* Etiqueta Humano */
-            margin-right: -20px !important; /* Mueve horizontalmente. Ajusta para alinear con la imagen. */
-            margin-top: 5px !important; /* Mueve verticalmente. */
+            position: relative; /* ¡CLAVE! */
+            right: -20px !important; /* Mueve horizontalmente. Ajusta para alinear con la imagen. */
+            top: 5px !important; /* Mueve verticalmente. */
         }
 
         /* Bloque para modificar la posición de la situación */
         .situation-text {
-            margin-top: -220px !important; /* Ajusta este valor para mover la situación verticalmente. */
-            /* Si quieres moverla horizontalmente (aunque ya está centrada), puedes usar: */
-            /* text-align: left !important; */
-            /* margin-left: 10px !important; */
+            position: relative; /* ¡CLAVE! */
+            top: -200px !important; /* Ajusta este valor para mover la situación verticalmente. */
+            /* Para moverla horizontalmente, puedes usar 'left' o 'right' */
+            /* left: 10px !important; */
+            /* text-align: left !important; */ /* Si quieres cambiar la alineación del texto */
         }
 
         /* Ajuste del slider para que ocupe más espacio en pantallas pequeñas */
@@ -192,16 +190,14 @@ st.markdown("""
         }
 
         /* 4. Posición del Botón "Siguiente" */
-        /* El botón "Siguiente" está fuera de las columnas, su selector es '.stButton>button' */
-        /* Para moverlo, puedes ajustar sus márgenes o usar flexbox/grid en su contenedor si fuera posible. */
-        /* Como es un elemento de bloque centrado por defecto en tu CSS, ajustar el margin-top es lo más directo para vertical. */
-        /* Para horizontal, ya está centrado con 'margin-left: auto; margin-right: auto;' */
+        /* Para el botón, 'margin-top' sigue siendo efectivo para el movimiento vertical. */
+        /* Para el horizontal, si quieres sacarlo del centro, puedes usar 'position: relative' */
         .stButton>button {
             margin-top: 30px !important; /* Ajusta este valor para mover el botón verticalmente. */
-            /* Para moverlo horizontalmente si no estuviera centrado, podrías usar: */
-            /* margin-left: 20px !important; */
-            /* margin-right: auto !important; */
-            /* O si quieres que esté a la derecha: */
+            /* Si quieres moverlo horizontalmente de forma independiente: */
+            /* position: relative; */
+            /* left: 10px !important; */ /* Mueve 10px a la derecha de su posición centrada */
+            /* O si quieres moverlo a la derecha: */
             /* margin-left: auto !important; */
             /* margin-right: 20px !important; */
         }
