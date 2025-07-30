@@ -249,7 +249,7 @@ def main():
             st.markdown("<h3>¡Gracias por participar! Tus respuestas han sido guardadas, puedes cerrar esta página.</h3>", unsafe_allow_html=True)
             return
         
-        col1, col2, col3 = st.columns([0.5, 3, 0.5])
+        col1, col2, col3 = st.columns([2, 1, 2])
         with col1:
             response = requests.get("https://raw.githubusercontent.com/SebastianFullStack/images/main/IA.png")
             img_ai = Image.open(BytesIO(response.content))
