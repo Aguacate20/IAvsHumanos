@@ -205,7 +205,7 @@ st.markdown("""
     .stButton>button {
         position: absolute;
         top: 170px !important;
-        left: 20px !important;
+        left: 50px !important;
     }
 }
 
