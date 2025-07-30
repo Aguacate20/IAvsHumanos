@@ -152,7 +152,7 @@ st.markdown("""
             height: auto !important; /* Mantiene la proporción */
             position: relative; /* ¡CLAVE! Permite mover el elemento sin afectar el flujo */
             left: 375px !important; /* Mueve horizontalmente. Valores negativos mueven a la izquierda. */
-            top: 40px !important; /* Mueve verticalmente. Valores positivos mueven hacia abajo. */
+            top: 70px !important; /* Mueve verticalmente. Valores positivos mueven hacia abajo. */
         }
         div[data-testid="column"]:nth-child(3) img { /* Imagen Humano */
             width: 120px !important; /* Ajusta el ancho */
