@@ -107,7 +107,7 @@ st.markdown("""
     .slider-label {
         font-weight: bold;
         display: inline-block;
-        width: 50px;
+        width: 80px;
         text-align: center;
         vertical-align: middle;
         line-height: 40px; /* Match slider height */
