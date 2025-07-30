@@ -12,7 +12,7 @@ supabase_client = supabase.create_client(st.secrets["secrets"]["NEXT_PUBLIC_SUPA
 
 # Situations list
 situations = [
-    "Esta es una situación de prueba para que te familiarices con el slider. ¿Qué tan útil te parece?",
+    "Esta es una situación de prueba, utiliza el deslizador para elegir cuál de los 2 agentes preferirías que te orientara/te diera un consejo/te ayudara en cada una de las siguientes situaciones",
     "¿Qué hago si quiero saber a quién contarle primero que voy a ser papá o mamá?",
     "¿Qué hago si no sé cómo avisarles a mis padres que tengo malas calificaciones?",
     "¿Qué hago si quiero cuidar bien a un bebé?",
@@ -52,7 +52,7 @@ def get_current_situation(situation_index):
 # Function to save questionnaire data to Supabase
 def save_questionnaire_data(data):
     try:
-        response = supabase_client.table("Respuestas").insert({
+        response = supabase_client.table("respuestas").insert({
             "consentimiento": data["consentimiento"],
             "name": data["data.name"],
             "birthdate": data["data.birthdate"],
@@ -73,7 +73,7 @@ def save_questionnaire_data(data):
 # Function to save situation response to Supabase
 def save_situation_response(participant_id, situation_index, response_time, slider_value):
     result = f"{slider_value} - {response_time}"
-    supabase_client.table("SituationResponses").insert({
+    supabase_client.table("situationresponses").insert({
         "participant_id": participant_id,
         "situation_index": situation_index,
         "response": result
@@ -110,6 +110,7 @@ st.markdown("""
         width: 50px;
         text-align: center;
         vertical-align: middle;
+        line-height: 40px; /* Match slider height */
     }
     .situation-text {
         font-weight: bold;
@@ -122,8 +123,11 @@ st.markdown("""
         cursor: not-allowed !important;
     }
     .image-container img {
-        width: 350px;
+        width: 400px;
         height: auto;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
     }
     </style>
 """, unsafe_allow_html=True)
@@ -250,20 +254,18 @@ def main():
             response = requests.get("https://raw.githubusercontent.com/SebastianFullStack/images/main/IA.png")
             img_ai = Image.open(BytesIO(response.content))
             st.image(img_ai, caption="Imagen IA", use_column_width=True)
+            st.markdown("<span class='slider-label'>IA</span>", unsafe_allow_html=True)
         with col3:
             response = requests.get("https://raw.githubusercontent.com/SebastianFullStack/images/main/Humano.png")
             img_human = Image.open(BytesIO(response.content))
             st.image(img_human, caption="Imagen Humano", use_column_width=True)
+            st.markdown("<span class='slider-label'>Humano</span>", unsafe_allow_html=True)
         
         with col2:
             st.markdown(f"<div class='situation-text'>{situation}</div>", unsafe_allow_html=True)
             slider_col1, slider_col2, slider_col3 = st.columns([1, 3, 1])
-            with slider_col1:
-                st.markdown("<span class='slider-label'>IA</span>", unsafe_allow_html=True)
             with slider_col2:
                 slider_value = st.slider("", 0, 100, 50, key="decision_slider")
-            with slider_col3:
-                st.markdown("<span class='slider-label'>Humano</span>", unsafe_allow_html=True)
         
         if not st.session_state.button_clicked:
             if st.button("Siguiente", key="situation_submit"):
