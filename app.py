@@ -196,7 +196,7 @@ st.markdown("""
     /* Slider */
     .stSlider {
         position: absolute;
-        top: 250px !important;
+        top: 150px !important;
         left: 20px !important;
         width: 90% !important;
     }
