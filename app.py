@@ -133,7 +133,7 @@ st.markdown("""
         width: 400px; /* Coincide con st.image */
         height: auto;
         display: block;
-        margin-left: 40px !important; /* Aumenta para mover "Humano" más a la derecha */
+        margin-left: 30px !important; /* Aumenta para mover "Humano" más a la derecha */
         margin-right: 0px !important; /* Evita centrado */
     }
     </style>
