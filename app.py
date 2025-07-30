@@ -159,7 +159,7 @@ st.markdown("""
             height: auto !important;
             position: relative; /* ¡CLAVE! */
             right: -50px !important; /* Mueve horizontalmente. Valores negativos mueven a la derecha. */
-            top: 100px !important; /* Mueve verticalmente */
+            top: -100px !important; /* Mueve verticalmente */
         }
 
         /* 3. Posición de las Etiquetas "IA" y "Humano" */
