@@ -147,68 +147,75 @@ st.markdown("""
     /* Media query para pantallas más pequeñas (ej. celulares) */
     @media (max-width: 768px) {
 
-    /* El contenedor principal que actuará como referencia */
-    .layout-wrapper {
+    /* Contenedor general si necesitas anclar elementos absolutos */
+    .main {
         position: relative;
-        height: 600px; /* Ajusta según lo que necesites */
     }
 
-    /* Imagen IA */
-    div[data-testid="column"]:nth-child(1) img {
+    /* 1. y 2. Tamaño y Posición de las Imágenes */
+
+    div[data-testid="column"]:nth-child(1) img { /* Imagen IA */
         width: 190px !important;
         height: auto !important;
-        position: absolute;
+        position: absolute; /* CAMBIADO */
         left: 330px !important;
-        top: 200px !important;
+        top: 199.5px !important;
+        z-index: 10;
     }
 
-    /* Imagen Humano */
-    div[data-testid="column"]:nth-child(3) img {
+    div[data-testid="column"]:nth-child(3) img { /* Imagen Humano */
         width: 190px !important;
         height: auto !important;
-        position: absolute;
-        left: 50px !important;
-        top: 100px !important;
+        position: absolute; /* CAMBIADO */
+        right: 130px !important; /* NOTA: ya no es negativo */
+        top: -300px !important;
+        z-index: 10;
     }
 
-    /* Etiqueta IA */
-    div[data-testid="column"]:nth-child(1) .slider-label {
-        position: absolute;
-        left: 330px !important;
-        top: 400px !important;
+    /* 3. Posición de las Etiquetas "IA" y "Humano" */
+
+    div[data-testid="column"]:nth-child(1) .slider-label { /* Etiqueta IA */
+        position: absolute; /* CAMBIADO */
+        left: 130px !important;
+        top: 225px !important;
+        z-index: 11;
     }
 
-    /* Etiqueta Humano */
-    div[data-testid="column"]:nth-child(3) .slider-label {
-        position: absolute;
-        left: 70px !important;
-        top: 400px !important;
+    div[data-testid="column"]:nth-child(3) .slider-label { /* Etiqueta Humano */
+        position: absolute; /* CAMBIADO */
+        right: 20px !important; /* Ajustado el signo */
+        top: -280px !important;
+        z-index: 11;
     }
 
-    /* Texto de situación */
+    /* Bloque para modificar la posición de la situación */
+
     .situation-text {
-        position: absolute;
-        top: 10px !important;
-        left: 10px !important;
-        width: 90%;
+        position: relative; /* Este lo puedes dejar así si quieres que el texto se ajuste */
+        top: -200px !important;
+        /* left: 150px !important; */
+        /* text-align: left !important; */
+        z-index: 1;
     }
 
-    /* Slider */
+    /* Ajuste del slider para que ocupe más espacio en pantallas pequeñas */
+
     .stSlider {
-        position: absolute;
-        top: 450px !important;
-        left: 20px !important;
-        width: 90% !important;
+        width: 100% !important;
+        margin: 20px auto !important;
+        z-index: 2;
     }
 
-    /* Botón */
+    /* 4. Posición del Botón "Siguiente" */
+
     .stButton>button {
-        position: absolute;
-        top: 530px !important;
-        left: 20px !important;
+        position: absolute; /* CAMBIADO */
+        top: 400px !important; /* Ajusta según el nuevo flujo */
+        left: 50% !important;
+        transform: translateX(-50%); /* Para centrar horizontalmente */
+        z-index: 12;
     }
 }
-
 
     </style>
 """, unsafe_allow_html=True)
