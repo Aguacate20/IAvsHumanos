@@ -278,6 +278,7 @@ def main():
                 data = {
                     "consentimiento": consent,
                     "data.name": name,
+                    "data.nationality": nationality,
                     "data.birthdate": birthdate.strftime("%Y-%m-%d"),
                     "data.devices": len(devices),
                     "data.tech": tech_time,
