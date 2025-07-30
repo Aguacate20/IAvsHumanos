@@ -158,7 +158,7 @@ st.markdown("""
             width: 120px !important; /* Ajusta el ancho */
             height: auto !important;
             position: relative; /* ¡CLAVE! */
-            right: -50px !important; /* Mueve horizontalmente. Valores negativos mueven a la derecha. */
+            right: -80px !important; /* Mueve horizontalmente. Valores negativos mueven a la derecha. */
             top: -368px !important; /* Mueve verticalmente */
         }
 
