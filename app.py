@@ -314,12 +314,19 @@ Si usted está de acuerdo con participar, por favor diligencie la encuesta adjun
         human_trust_social = st.selectbox("¿Qué tanto confías en que otras personas (amigos, profesores, profesionales) pueden ayudarte en situaciones personales o emocionales (como darte consejos, apoyarte o entender cómo te sientes)?",
                                           [1, 2, 3, 4, 5], key="human_trust_social")
 
-        # New instruction added here
+        # Instruction for Likert questions
         st.markdown("Por favor, indique qué tan cierta considera que es cada afirmación, teniendo en cuenta el nivel de seguridad con que responde: (1 = Falso y estoy muy seguro/a; 2 = Falso pero no del todo seguro/a; 3 = No estoy seguro/a; 4 = Verdadero pero no del todo seguro/a; 5 = Verdadero y estoy muy seguro/a).")
-
-        # Define Likert options
-        likert_options = [1, 2, 3, 4, 5]
-
+        
+        # Define Likert options for display and their corresponding values
+        likert_options_display = [
+            "1 = Falso y estoy muy seguro/a",
+            "2 = Falso pero no del todo seguro/a",
+            "3 = No estoy seguro/a",
+            "4 = Verdadero pero no del todo seguro/a",
+            "5 = Verdadero y estoy muy seguro/a"
+        ]
+        likert_values = [1, 2, 3, 4, 5]  # Corresponding numeric values
+        
         # Section: ¿Qué es IA? RUI
         st.subheader("¿Qué es IA? RUI")
         rui_questions = [
@@ -337,8 +344,10 @@ Si usted está de acuerdo con participar, por favor diligencie la encuesta adjun
         random.shuffle(rui_questions)  # Randomize order for this section
         for i, q in enumerate(rui_questions, 1):
             data_key = f"rui_{i}"
-            st.selectbox(q, likert_options, key=data_key)
-
+            selected_option = st.selectbox(q, likert_options_display, key=data_key)
+            # Map the selected option to its numeric value
+            st.session_state[data_key] = likert_values[likert_options_display.index(selected_option)]
+        
         # Section: ¿Qué es IA? GN
         st.subheader("¿Qué es IA? GN")
         gn_questions = [
@@ -350,8 +359,9 @@ Si usted está de acuerdo con participar, por favor diligencie la encuesta adjun
         random.shuffle(gn_questions)  # Randomize order for this section
         for i, q in enumerate(gn_questions, 1):
             data_key = f"gn_{i}"
-            st.selectbox(q, likert_options, key=data_key)
-
+            selected_option = st.selectbox(q, likert_options_display, key=data_key)
+            st.session_state[data_key] = likert_values[likert_options_display.index(selected_option)]
+        
         # Section: ¿Qué puede hacer la IA?
         st.subheader("¿Qué puede hacer la IA?")
         what_can_ai_do_questions = [
@@ -364,8 +374,9 @@ Si usted está de acuerdo con participar, por favor diligencie la encuesta adjun
         random.shuffle(what_can_ai_do_questions)  # Randomize order for this section
         for i, q in enumerate(what_can_ai_do_questions, 1):
             data_key = f"what_can_ai_do_{i}"
-            st.selectbox(q, likert_options, key=data_key)
-
+            selected_option = st.selectbox(q, likert_options_display, key=data_key)
+            st.session_state[data_key] = likert_values[likert_options_display.index(selected_option)]
+        
         # Section: ¿Cómo funciona la IA?
         st.subheader("¿Cómo funciona la IA?")
         how_does_ai_work_questions = [
@@ -396,8 +407,9 @@ Si usted está de acuerdo con participar, por favor diligencie la encuesta adjun
         random.shuffle(how_does_ai_work_questions)  # Randomize order for this section
         for i, q in enumerate(how_does_ai_work_questions, 1):
             data_key = f"how_does_ai_work_{i}"
-            st.selectbox(q, likert_options, key=data_key)
-
+            selected_option = st.selectbox(q, likert_options_display, key=data_key)
+            st.session_state[data_key] = likert_values[likert_options_display.index(selected_option)]
+        
         # Section: ¿Cómo se debería utilizar la IA?
         st.subheader("¿Cómo se debería utilizar la IA?")
         how_should_ai_be_used_questions = [
@@ -415,8 +427,9 @@ Si usted está de acuerdo con participar, por favor diligencie la encuesta adjun
         random.shuffle(how_should_ai_be_used_questions)  # Randomize order for this section
         for i, q in enumerate(how_should_ai_be_used_questions, 1):
             data_key = f"how_should_ai_be_used_{i}"
-            st.selectbox(q, likert_options, key=data_key)
-
+            selected_option = st.selectbox(q, likert_options_display, key=data_key)
+            st.session_state[data_key] = likert_values[likert_options_display.index(selected_option)]
+        
         if not st.session_state.button_clicked:
             if st.button("Siguiente", key="questionnaire_submit"):
                 st.session_state.button_clicked = True
