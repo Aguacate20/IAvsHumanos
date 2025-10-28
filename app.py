@@ -6,7 +6,6 @@ from datetime import datetime
 from PIL import Image
 import requests
 from io import BytesIO
-import random
 
 # Initialize Supabase client using secrets
 supabase_client = supabase.create_client(st.secrets["secrets"]["NEXT_PUBLIC_SUPABASE_URL"], st.secrets["secrets"]["NEXT_PUBLIC_SUPABASE_ANON_KEY"])
@@ -353,7 +352,6 @@ Si usted está de acuerdo con participar, por favor diligencie la encuesta adjun
             "La inteligencia artificial es una sola tecnología.",
             "La visión por computadora es un ejemplo de tecnología de inteligencia artificial interdisciplinaria."
         ]
-        random.shuffle(rui_questions)  # Randomize order for this section
         for i, q in enumerate(rui_questions, 1):
             data_key = f"rui_{i}"
             st.selectbox(q, likert_labels, key=data_key)
@@ -366,7 +364,6 @@ Si usted está de acuerdo con participar, por favor diligencie la encuesta adjun
             "La inteligencia artificial puede dividirse en subcampos específicos, como la inteligencia artificial general y la inteligencia artificial estrecha.",
             "Los sistemas de inteligencia artificial estrecha están diseñados para tareas y dominios específicos."
         ]
-        random.shuffle(gn_questions)  # Randomize order for this section
         for i, q in enumerate(gn_questions, 1):
             data_key = f"gn_{i}"
             st.selectbox(q, likert_labels, key=data_key)
@@ -380,7 +377,6 @@ Si usted está de acuerdo con participar, por favor diligencie la encuesta adjun
             "Las inteligencias artificiales actuales son plenamente capaces de realizar asociaciones complejas, tal como lo hacen los seres humanos.",
             "La inteligencia artificial es eficiente para resolver problemas que involucran emociones."
         ]
-        random.shuffle(what_can_ai_do_questions)  # Randomize order for this section
         for i, q in enumerate(what_can_ai_do_questions, 1):
             data_key = f"what_can_ai_do_{i}"
             st.selectbox(q, likert_labels, key=data_key)
@@ -412,7 +408,6 @@ Si usted está de acuerdo con participar, por favor diligencie la encuesta adjun
             "Los sensores ayudan al robot a comprender su entorno.",
             "Los sensores son dispositivos que detectan y convierten propiedades físicas medibles en un formato digital."
         ]
-        random.shuffle(how_does_ai_work_questions)  # Randomize order for this section
         for i, q in enumerate(how_does_ai_work_questions, 1):
             data_key = f"how_does_ai_work_{i}"
             st.selectbox(q, likert_labels, key=data_key)
@@ -431,7 +426,6 @@ Si usted está de acuerdo con participar, por favor diligencie la encuesta adjun
             "La inteligencia artificial no debe disminuir ni destruir, sino respetar, preservar e incluso fortalecer la dignidad humana.",
             "Los beneficios de la inteligencia artificial no deben poner en riesgo la cohesión social ni el respeto hacia las personas y grupos potencialmente vulnerables."
         ]
-        random.shuffle(how_should_ai_be_used_questions)  # Randomize order for this section
         for i, q in enumerate(how_should_ai_be_used_questions, 1):
             data_key = f"how_should_ai_be_used_{i}"
             st.selectbox(q, likert_labels, key=data_key)
