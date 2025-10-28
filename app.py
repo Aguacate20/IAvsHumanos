@@ -263,14 +263,26 @@ def main():
     if st.session_state.screen == "questionnaire":
         st.header("Encuesta de Toma de Decisiones")
         st.markdown("""
-            Muchas gracias por participar en el proyecto del Doctorado en Psicología acerca de decisiones emocionales y morales e Inteligencia Artificial. El presente cuestionario busca conocer sus datos sociodemográficos y forma de contacto, con el fin de generar un perfil completo de los participantes en el estudio. Agradecemos diligenciar todo el cuestionario. Por favor responda con la mayor fidelidad posible a su situación y tómese el tiempo que necesite para hacerlo.
-            El cuestionario fue diseñado para una duración aproximada de quince minutos de realización con el objetivo de tener múltiples variables que permitan un análisis completo en conjunto con una prueba psicométrica que será aplicada a cada participante con el fin de identificar sus decisiones ante preguntas específicas.
-            Esta actividad se realiza como marco de un ejercicio académico con el fin de generar una evaluación y relación entre variables y los niveles de toma de decisión de los participantes según situaciones específicas.
-            De nuevo muchas gracias por la información brindada, es de gran utilidad para mejorar el conocimiento sobre posibles efectos del aprendizaje tecnológico en los participantes. Si desea conocer más información al respecto o desea contactar a el investigador principal, no dude en comunicarse a los siguientes datos de contacto:
-            **Johan Sebastián Galindez Acosta**
-            Celular: +57 3103817021
-            Correo: johangalac@unisabana.edu.co
-            Toda la información aquí consolidada se manejará bajo principios de confidencialidad y anonimato. Los datos se codificarán para que sea imposible el manejo por parte de terceros ajenos al estudio. Si usted está de acuerdo con participar por favor diligencie la encuesta adjunta. Recuerde que en cualquier momento puede decidir si continúa o se retira de participar en el estudio sin ningún tipo de sanción o perjuicio.
+            Muchas gracias por participar en el proyecto del Doctorado en Psicología acerca de decisiones emocionales y morales e Inteligencia Artificial.
+
+El presente cuestionario busca conocer sus datos sociodemográficos y forma de contacto, con el fin de generar un perfil completo de los participantes en el estudio. Agradecemos diligenciar todo el cuestionario. Por favor responda con la mayor fidelidad posible a su situación y tómese el tiempo que necesite para hacerlo.
+
+El cuestionario fue diseñado para una duración aproximada de quince minutos de realización con el objetivo de tener múltiples variables que permitan un análisis completo en conjunto con una prueba psicométrica que será aplicada a cada participante con el fin de identificar sus decisiones ante preguntas específicas.
+
+Adicionalmente, en el marco del presente proyecto se le aplicará una versión adaptada al español de la escala internacional SAIL4ALL (Scale of AI Literacy for All), la cual evalúa conocimientos y percepciones sobre la inteligencia artificial. Esta adaptación busca validar el instrumento en población hispanohablante y comparar los resultados obtenidos con otras variables psicológicas del estudio, tales como los niveles de confianza, certeza y toma de decisiones en contextos emocionales y morales.
+
+Esta actividad se realiza como parte de un ejercicio académico con el fin de generar una evaluación y relación entre variables y los niveles de toma de decisión de los participantes según situaciones específicas.
+
+De nuevo, muchas gracias por la información brindada; es de gran utilidad para mejorar el conocimiento sobre posibles efectos del aprendizaje tecnológico y la interacción con sistemas de inteligencia artificial.
+
+Si desea conocer más información al respecto o desea contactar al investigador principal, no dude en comunicarse a los siguientes datos de contacto:
+Johan Sebastián Galindez Acosta
+Celular: +57 310 381 7021
+Correo electrónico: johangalac@unisabana.edu.co
+
+Toda la información aquí consolidada se manejará bajo principios de confidencialidad y anonimato. Los datos se codificarán para que sea imposible el manejo por parte de terceros ajenos al estudio.
+
+Si usted está de acuerdo con participar, por favor diligencie la encuesta adjunta. Recuerde que en cualquier momento puede decidir si continúa o se retira de participar en el estudio, sin ningún tipo de sanción o perjuicio.
         """)
         consent = st.selectbox("¿Acepta participar en la recolección de datos anteriormente descrita?", ["Sí", "No"], key="consent")
         st.subheader("Por favor complete el siguiente cuestionario")
