@@ -398,7 +398,7 @@ def main():
 
         # Section: ¿Cómo se debería utilizar la IA?
         st.subheader("¿Cómo se debería utilizar la IA?")
-        how_should_ai_be used_questions = [
+        how_should_ai_be_used_questions = [
             "Para lograr una mayor transparencia, deben comunicarse el código fuente, el uso de los datos, la base de evidencia para el uso de la inteligencia artificial, sus limitaciones y las responsabilidades asociadas.",
             "La inteligencia artificial debe crearse de acuerdo con los principios democráticos y las cuestiones sociales.",
             "Es necesario desarrollar y fortalecer las normas y leyes, incluyendo el derecho a apelar, reclamar o solicitar reparación ante soluciones basadas en inteligencia artificial.",
