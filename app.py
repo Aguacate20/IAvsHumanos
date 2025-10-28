@@ -314,6 +314,19 @@ def main():
         }
         likert_labels = list(likert_options.keys())  # List of labels for selectbox
 
+        # List of all question keys for validation
+        likert_keys = [
+            f"rui_{i}" for i in range(1, 11)
+        ] + [
+            f"gn_{i}" for i in range(1, 5)
+        ] + [
+            f"what_can_ai_do_{i}" for i in range(1, 6)
+        ] + [
+            f"how_does_ai_work_{i}" for i in range(1, 24)
+        ] + [
+            f"how_should_ai_be_used_{i}" for i in range(1, 11)
+        ]
+
         # Section: ¿Qué es IA? RUI
         st.subheader("¿Qué es IA? RUI")
         rui_questions = [
@@ -331,8 +344,7 @@ def main():
         random.shuffle(rui_questions)  # Randomize order for this section
         for i, q in enumerate(rui_questions, 1):
             data_key = f"rui_{i}"
-            selected_label = st.selectbox(q, likert_labels, key=data_key)
-            st.session_state[data_key] = likert_options[selected_label]  # Store numeric value
+            st.selectbox(q, likert_labels, key=data_key)
 
         # Section: ¿Qué es IA? GN
         st.subheader("¿Qué es IA? GN")
@@ -345,8 +357,7 @@ def main():
         random.shuffle(gn_questions)  # Randomize order for this section
         for i, q in enumerate(gn_questions, 1):
             data_key = f"gn_{i}"
-            selected_label = st.selectbox(q, likert_labels, key=data_key)
-            st.session_state[data_key] = likert_options[selected_label]  # Store numeric value
+            st.selectbox(q, likert_labels, key=data_key)
 
         # Section: ¿Qué puede hacer la IA?
         st.subheader("¿Qué puede hacer la IA?")
@@ -360,8 +371,7 @@ def main():
         random.shuffle(what_can_ai_do_questions)  # Randomize order for this section
         for i, q in enumerate(what_can_ai_do_questions, 1):
             data_key = f"what_can_ai_do_{i}"
-            selected_label = st.selectbox(q, likert_labels, key=data_key)
-            st.session_state[data_key] = likert_options[selected_label]  # Store numeric value
+            st.selectbox(q, likert_labels, key=data_key)
 
         # Section: ¿Cómo funciona la IA?
         st.subheader("¿Cómo funciona la IA?")
@@ -393,8 +403,7 @@ def main():
         random.shuffle(how_does_ai_work_questions)  # Randomize order for this section
         for i, q in enumerate(how_does_ai_work_questions, 1):
             data_key = f"how_does_ai_work_{i}"
-            selected_label = st.selectbox(q, likert_labels, key=data_key)
-            st.session_state[data_key] = likert_options[selected_label]  # Store numeric value
+            st.selectbox(q, likert_labels, key=data_key)
 
         # Section: ¿Cómo se debería utilizar la IA?
         st.subheader("¿Cómo se debería utilizar la IA?")
@@ -413,8 +422,7 @@ def main():
         random.shuffle(how_should_ai_be_used_questions)  # Randomize order for this section
         for i, q in enumerate(how_should_ai_be_used_questions, 1):
             data_key = f"how_should_ai_be_used_{i}"
-            selected_label = st.selectbox(q, likert_labels, key=data_key)
-            st.session_state[data_key] = likert_options[selected_label]  # Store numeric value
+            st.selectbox(q, likert_labels, key=data_key)
 
         if not st.session_state.button_clicked:
             if st.button("Siguiente", key="questionnaire_submit"):
@@ -427,6 +435,12 @@ def main():
                     st.error("Por favor complete todos los campos obligatorios.")
                     st.session_state.button_clicked = False
                     return
+                # Validate that all Likert questions are answered
+                if not all(st.session_state.get(key) for key in likert_keys):
+                    st.error("Por favor responde todas las preguntas de las secciones de IA.")
+                    st.session_state.button_clicked = False
+                    return
+                # Build data dictionary, converting Likert labels to numeric values
                 data = {
                     "consentimiento": consent,
                     "data.name": name,
@@ -439,60 +453,11 @@ def main():
                     "ai.trust.epistemic": ai_trust_epistemic,
                     "ai.trust.social": ai_trust_social,
                     "human.trust.epistemic": human_trust_epistemic,
-                    "human.trust.social": human_trust_social,
-                    "rui_1": st.session_state.get("rui_1"),
-                    "rui_2": st.session_state.get("rui_2"),
-                    "rui_3": st.session_state.get("rui_3"),
-                    "rui_4": st.session_state.get("rui_4"),
-                    "rui_5": st.session_state.get("rui_5"),
-                    "rui_6": st.session_state.get("rui_6"),
-                    "rui_7": st.session_state.get("rui_7"),
-                    "rui_8": st.session_state.get("rui_8"),
-                    "rui_9": st.session_state.get("rui_9"),
-                    "rui_10": st.session_state.get("rui_10"),
-                    "gn_1": st.session_state.get("gn_1"),
-                    "gn_2": st.session_state.get("gn_2"),
-                    "gn_3": st.session_state.get("gn_3"),
-                    "gn_4": st.session_state.get("gn_4"),
-                    "what_can_ai_do_1": st.session_state.get("what_can_ai_do_1"),
-                    "what_can_ai_do_2": st.session_state.get("what_can_ai_do_2"),
-                    "what_can_ai_do_3": st.session_state.get("what_can_ai_do_3"),
-                    "what_can_ai_do_4": st.session_state.get("what_can_ai_do_4"),
-                    "what_can_ai_do_5": st.session_state.get("what_can_ai_do_5"),
-                    "how_does_ai_work_1": st.session_state.get("how_does_ai_work_1"),
-                    "how_does_ai_work_2": st.session_state.get("how_does_ai_work_2"),
-                    "how_does_ai_work_3": st.session_state.get("how_does_ai_work_3"),
-                    "how_does_ai_work_4": st.session_state.get("how_does_ai_work_4"),
-                    "how_does_ai_work_5": st.session_state.get("how_does_ai_work_5"),
-                    "how_does_ai_work_6": st.session_state.get("how_does_ai_work_6"),
-                    "how_does_ai_work_7": st.session_state.get("how_does_ai_work_7"),
-                    "how_does_ai_work_8": st.session_state.get("how_does_ai_work_8"),
-                    "how_does_ai_work_9": st.session_state.get("how_does_ai_work_9"),
-                    "how_does_ai_work_10": st.session_state.get("how_does_ai_work_10"),
-                    "how_does_ai_work_11": st.session_state.get("how_does_ai_work_11"),
-                    "how_does_ai_work_12": st.session_state.get("how_does_ai_work_12"),
-                    "how_does_ai_work_13": st.session_state.get("how_does_ai_work_13"),
-                    "how_does_ai_work_14": st.session_state.get("how_does_ai_work_14"),
-                    "how_does_ai_work_15": st.session_state.get("how_does_ai_work_15"),
-                    "how_does_ai_work_16": st.session_state.get("how_does_ai_work_16"),
-                    "how_does_ai_work_17": st.session_state.get("how_does_ai_work_17"),
-                    "how_does_ai_work_18": st.session_state.get("how_does_ai_work_18"),
-                    "how_does_ai_work_19": st.session_state.get("how_does_ai_work_19"),
-                    "how_does_ai_work_20": st.session_state.get("how_does_ai_work_20"),
-                    "how_does_ai_work_21": st.session_state.get("how_does_ai_work_21"),
-                    "how_does_ai_work_22": st.session_state.get("how_does_ai_work_22"),
-                    "how_does_ai_work_23": st.session_state.get("how_does_ai_work_23"),
-                    "how_should_ai_be_used_1": st.session_state.get("how_should_ai_be_used_1"),
-                    "how_should_ai_be_used_2": st.session_state.get("how_should_ai_be_used_2"),
-                    "how_should_ai_be_used_3": st.session_state.get("how_should_ai_be_used_3"),
-                    "how_should_ai_be_used_4": st.session_state.get("how_should_ai_be_used_4"),
-                    "how_should_ai_be_used_5": st.session_state.get("how_should_ai_be_used_5"),
-                    "how_should_ai_be_used_6": st.session_state.get("how_should_ai_be_used_6"),
-                    "how_should_ai_be_used_7": st.session_state.get("how_should_ai_be_used_7"),
-                    "how_should_ai_be_used_8": st.session_state.get("how_should_ai_be_used_8"),
-                    "how_should_ai_be_used_9": st.session_state.get("how_should_ai_be_used_9"),
-                    "how_should_ai_be_used_10": st.session_state.get("how_should_ai_be_used_10")
+                    "human.trust.social": human_trust_social
                 }
+                # Add Likert responses, converting labels to numbers
+                for key in likert_keys:
+                    data[key] = likert_options.get(st.session_state.get(key))
                 participant_id = save_questionnaire_data(data)
                 if participant_id:
                     st.session_state.participant_id = participant_id
@@ -535,7 +500,6 @@ def main():
             return
        
         col1, col2, col3 = st.columns([1, 4, 1])
-        withательного
         with col1:
             response = requests.get("https://raw.githubusercontent.com/SebastianFullStack/images/main/IA.png")
             img_ai = Image.open(BytesIO(response.content))
@@ -565,5 +529,6 @@ def main():
                 st.rerun()
         else:
             st.markdown('<button class="loading-button" disabled>Cargando</button>', unsafe_allow_html=True)
+
 if __name__ == "__main__":
     main()
