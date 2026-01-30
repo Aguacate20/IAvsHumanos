@@ -12,7 +12,7 @@ supabase_client = supabase.create_client(st.secrets["secrets"]["NEXT_PUBLIC_SUPA
 
 # Situations list
 situations = [
-    "Situación de prueba",
+    "Situación de prueba, ¿Quién quieres que te dé un consejo/te ayude/te oriente? Más cerca al 0 más confías en la IA, más al 100 más confías en humanos",
     "¿Qué hago si quiero saber a quién contarle primero que voy a ser papá o mamá?",
     "¿Qué hago si no sé cómo avisarles a mis padres que tengo malas calificaciones?",
     "¿Qué hago si quiero cuidar bien a un bebé?",
